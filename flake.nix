@@ -17,7 +17,6 @@
             corepack
             eslint_d
             prettierd
-            typescript-language-server
             tailwindcss-language-server
             nodePackages.vscode-langservers-extracted
 

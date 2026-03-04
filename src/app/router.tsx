@@ -2,6 +2,7 @@ import { paths } from "@/config/paths";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { NotFoundRoute } from "./routes/not-found";
 import { LoginRoute } from "./routes/auth/login";
+import { RegisterRoute } from "./routes/auth/register";
 
 const createAppRouter = () =>
   createBrowserRouter([
@@ -11,7 +12,7 @@ const createAppRouter = () =>
     },
     {
       path: paths.auth.register.path,
-      element: <div>REGISTER PAGE</div>,
+      element: <RegisterRoute />,
     },
     {
       path: paths.auth.login.path,

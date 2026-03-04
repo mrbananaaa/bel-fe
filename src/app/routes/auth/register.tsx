@@ -1,9 +1,9 @@
 import { AuthLayout } from "@/components/layouts/auth-layout";
 import { paths } from "@/config/paths";
-import { LoginForm } from "@/features/auth/components/login-form";
+import { RegisterForm } from "@/features/auth/components/register-form";
 import { Link } from "react-router";
 
-export const LoginRoute = () => {
+export const RegisterRoute = () => {
   return (
     <AuthLayout>
       <div className="relative">
@@ -12,18 +12,16 @@ export const LoginRoute = () => {
         </div>
 
         <div className="flex flex-col pt-12 space-y-20">
-          <div className="flex flex-col space-y-2 mt-8">
+          <div className="flex flex-col space-y-0 mt-8 text-center">
             <h1 className="font-head font-bold text-4xl tracking-tighter selection:bg-accent">
-              Welcome to <br /> Beyond{" "}
-              <span className="text-accent selection:text-white">Echo</span>{" "}
-              Link,
+              Create An Account
             </h1>
             <p className="font-paragraph text-paragraph selection:text-white selection:bg-paragraph">
-              Please sign in before connecting to the link.
+              Sign Up and tell ur friend something.
             </p>
           </div>
 
-          <LoginForm />
+          <RegisterForm />
         </div>
       </div>
     </AuthLayout>
