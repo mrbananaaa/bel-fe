@@ -4,16 +4,13 @@ import { NotFoundRoute } from "./routes/not-found";
 import { LoginRoute } from "./routes/auth/login";
 import { RegisterRoute } from "./routes/auth/register";
 import { ProtectedRoute } from "@/lib/auth";
+import { ChatRoute } from "./routes/chat";
 
 const createAppRouter = () =>
   createBrowserRouter([
     {
       path: paths.home.path,
-      element: (
-        <ProtectedRoute>
-          <div>HOME PAGE</div>
-        </ProtectedRoute>
-      ),
+      element: <ChatRoute />,
     },
     {
       path: paths.auth.register.path,
