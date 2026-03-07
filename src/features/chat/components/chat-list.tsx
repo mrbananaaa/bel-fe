@@ -6,29 +6,10 @@ type Chat = {
   lastMessageTime: Date;
 };
 
-const chatLists: Chat[] = [
-  {
-    id: 1,
-    displayName: "Devyan Astagiri",
-    username: "mrbananaaa",
-    lastMessageTime: new Date(Date.now()),
-  },
-  {
-    id: 2,
-    displayName: "Abigail Caroline",
-    username: "carolineee",
-    lastMessageTime: new Date(Date.now()),
-  },
-  {
-    id: 3,
-    displayName: "Denny Baik Hati",
-    username: "travelguyonan",
-    lastMessageTime: new Date(Date.now()),
-  },
-];
-
 type ChatCardProps = {
   chat: Chat;
+  activeChat: number | null;
+  setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 function getHoursAndMinutes(time: Date): string {
@@ -38,11 +19,14 @@ function getHoursAndMinutes(time: Date): string {
   return `${hh}:${mm}`;
 }
 
-const ChatCard = ({ chat }: ChatCardProps) => {
+const ChatCard = ({ chat, activeChat, setActiveChat }: ChatCardProps) => {
   const timeSent = getHoursAndMinutes(chat.lastMessageTime);
 
   return (
-    <div className="w-full flex justify-between p-4 rounded-lg bg-white shadow-lg border border-accent cursor-pointer hover:bg-bg-light/5 selection:bg-none">
+    <div
+      onClick={() => setActiveChat(chat.id)}
+      className={`w-full flex justify-between p-4 rounded-lg shadow-lg border border-accent cursor-pointer selection:bg-none ${activeChat === chat.id ? "bg-red-300" : "bg-white hover:bg-bg-light/5"}`}
+    >
       <div className="flex items-center space-x-3">
         <div className="w-12 h-12 bg-gray-300 rounded-full border border-accent" />
 
@@ -69,11 +53,26 @@ const ChatCard = ({ chat }: ChatCardProps) => {
   );
 };
 
-export const ChatList = () => {
+type ChatListProps = {
+  chatList: Chat[];
+  activeChat: number | null;
+  setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
+};
+
+export const ChatList = ({
+  chatList,
+  activeChat,
+  setActiveChat,
+}: ChatListProps) => {
   return (
-    <div className="flex flex-col space-y-2 min-w-96">
-      {chatLists.map((c, i) => (
-        <ChatCard key={i} chat={c} />
+    <div className="flex flex-col space-y-2">
+      {chatList.map((c, i) => (
+        <ChatCard
+          key={i}
+          chat={c}
+          activeChat={activeChat}
+          setActiveChat={setActiveChat}
+        />
       ))}
     </div>
   );
